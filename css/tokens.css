@@ -1,0 +1,27 @@
+/* Tokens da marca Vorkax. Fonte da verdade: DESIGN.md (validado com designmd lint). */
+:root {
+  --primary: #0F4C3A;
+  --primary-deep: #0A2E24;
+  --gold: #C9A227;
+  --gold-light: #E6CB6E;
+  --ivory: #FAF7EE;
+  --sand: #EFE8D2;
+  --ink: #12201B;
+  --muted: #4F625B;
+  --growth: #1F8A5B;
+  --white: #FFFFFF;
+  --up: #7DDBA3;
+  --down: #F2A08B;
+
+  --font-head: "Sora", "Segoe UI", system-ui, sans-serif;
+  --font-body: "Inter", "Segoe UI", system-ui, sans-serif;
+
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 32px;
+  --space-xl: 64px;
+  --container: 1160px;
+  --shadow: 0 10px 30px color-mix(in srgb, var(--ink) 12%, transparent);
+}

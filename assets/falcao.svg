@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="Vorkax">
+  <rect width="200" height="200" rx="28" fill="#0A2E24"/>
+  <g fill="none" stroke="#C9A227" stroke-width="9" stroke-linejoin="miter">
+    <path d="M62 72 L100 140 L138 72"/>
+    <path d="M28 58 L82 72 M34 80 L72 92 M42 102 L66 110"/>
+    <path d="M172 58 L118 72 M166 80 L128 92 M158 102 L134 110"/>
+  </g>
+</svg>
