@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>VORKAX — Plataforma</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  // Tailwind v4-style @theme mapping: as cores seguem sendo definidas 1x
+  // em css/styles.css (:root custom properties). Aqui só expomos utilitários
+  // Tailwind (ex.: bg-verax-gold, text-verax-ink) que leem essas mesmas vars,
+  // então a paleta nunca se duplica.
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          'verax-bg': 'var(--bg)', 'verax-bg-alt': 'var(--bg-alt)',
+          'verax-surface': 'var(--surface)', 'verax-surface-2': 'var(--surface-2)',
+          'verax-ink': 'var(--ink)', 'verax-ink-soft': 'var(--ink-soft)', 'verax-ink-faint': 'var(--ink-faint)',
+          'verax-line': 'var(--line)', 'verax-line-2': 'var(--line-2)',
+          'verax-gold': 'var(--gold)', 'verax-gold-deep': 'var(--gold-deep)', 'verax-gold-soft': 'var(--gold-soft)', 'verax-gold-bg': 'var(--gold-bg)',
+          'verax-go': 'var(--go)', 'verax-go-bg': 'var(--go-bg)',
+          'verax-warn': 'var(--warn)', 'verax-warn-bg': 'var(--warn-bg)',
+          'verax-stop': 'var(--stop)', 'verax-stop-bg': 'var(--stop-bg)',
+          'verax-info': 'var(--info)', 'verax-info-bg': 'var(--info-bg)'
+        },
+        fontFamily: {
+          sans: ['Plus Jakarta Sans', 'system-ui', 'sans-serif'],
+          mono: ['IBM Plex Mono', 'ui-monospace', 'monospace']
+        },
+        borderRadius: { none: '0', sm: '8px', DEFAULT: '15px', md: '10px', lg: '15px', xl: '18px', '2xl': '22px', full: '9999px' },
+        boxShadow: {
+          sm: '0 5px 18px rgba(20,25,22,.06)',
+          DEFAULT: '0 5px 18px rgba(20,25,22,.06)',
+          lg: '0 18px 46px rgba(20,25,22,.13)'
+        }
+      }
+    }
+  };
+</script>
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<!-- ================= PUBLIC SITE ================= -->
+<div class="screen active" id="site">
+  <nav class="pbar" id="pbar" aria-label="Navegação principal">
+    <div class="wrap in">
+      <a class="logo" href="#top" aria-label="VORKAX, ir ao topo"><img src="../assets/falcao.svg" alt="" aria-hidden="true">VORKAX</a>
+      <div class="menu">
+        <a class="lnk" href="#sobre">Sobre</a><a class="lnk" href="#entregamos">O que entregamos</a><a class="lnk" href="#servicos">Serviços</a>
+        <a class="btn ghostw sm" href="../index.html">Index</a>
+        <button class="btn ghostw sm" data-login>Acessar plataforma</button>
+      </div>
+    </div>
+  </nav>
+  <div id="top"></div>
+  <header class="phero">
+    <div class="phero-bg" style="background-image:url('assets/img/hero.jpg')"></div>
+    <div class="phero-ov"></div>
+    <div class="wrap phero-c">
+      <div class="eyebrow">Confiança verificada · agro · BR · AR · CL</div>
+      <h1>A infraestrutura de confiança do <em>comércio do agro</em>.</h1>
+      <p class="sub">VORKAX valida o comprador, controla o financeiro, o estoque e o câmbio, e transforma cada operação num dado que protege a próxima.</p>
+      <div style="display:flex; gap:.9rem; flex-wrap:wrap">
+        <button class="btn gold" data-login>Entrar na plataforma</button>
+        <a class="btn ghostw" href="#entregamos">O que entregamos</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="psec" id="sobre">
+    <div class="wrap twocol">
+      <div class="reveal">
+        <p class="kick">Sobre a VORKAX</p>
+        <h2 class="h2">Nascemos na mesa do agro, não num escritório.</h2>
+        <p class="lead">Os fundadores venderam alho, cebola, feijão, orégano e grão-de-bico, e sofreram na pele a fraude do CNPJ sequestrado e o calote na venda a prazo. A VORKAX é a resposta: uma camada de confiança que decide, em minutos, se aquela carga deve sair.</p>
+        <p class="lead">Começamos pelo laudo de decisão e crescemos para o sistema operacional financeiro do agro, sempre com uma regra: cada afirmação tem fonte, cada dado tem dono.</p>
+      </div>
+      <div class="reveal">
+        <div class="misscard"><h3>Missão</h3><p style="color:var(--ink-soft)">Eliminar a fraude e o calote da venda a prazo no agro latino-americano, dando a quem vende e a quem compra uma decisão confiável e rápida.</p></div>
+        <div class="misscard"><h3>Visão</h3><p style="color:var(--ink-soft)">Ser o passaporte de confiança e a infraestrutura financeira por onde passa o comércio de alimentos da América do Sul.</p></div>
+        <div class="misscard"><h3>Valores</h3><p style="color:var(--ink-soft)">Fato acima de opinião. Fonte sempre citada. Proteger os dois lados da mesa. Simplicidade que se usa no campo.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="psec" id="entregamos" style="background:var(--bg-alt); border-block:1px solid var(--line)">
+    <div class="wrap">
+      <p class="kick">O que entregamos aos nossos clientes</p>
+      <h2 class="h2">Uma operação inteira, num só lugar.</h2>
+      <div class="deliver">
+        <div class="dcard reveal"><div class="ico"><svg class="i" width="22" height="22" viewBox="0 0 24 24"><path d="M12 3l7 3v6c0 4-3 7-7 9-4-2-7-5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg></div><h3>Laudo Único (Due Diligence)</h3><p>Identidade, idoneidade e capacidade do comprador em um veredito de semáforo, com limite sugerido.</p></div>
+        <div class="dcard reveal"><div class="ico"><svg class="i" width="22" height="22" viewBox="0 0 24 24"><path d="M3 6h18v12H3z"/><path d="M3 10h18"/></svg></div><h3>Controle Financeiro</h3><p>Caixa, contas a pagar e receber, fluxo, DRE e centros de custo. A saúde financeira em tempo real.</p></div>
+        <div class="dcard reveal"><div class="ico"><svg class="i" width="22" height="22" viewBox="0 0 24 24"><path d="M4 8l8-4 8 4-8 4-8-4z"/><path d="M4 8v8l8 4 8-4V8"/></svg></div><h3>Controle de Estoque</h3><p>Planilha de lotes, câmara fria e giro, com visão por câmeras (Supervision + RuView) pronta para conectar.</p></div>
+        <div class="dcard reveal"><div class="ico"><svg class="i" width="22" height="22" viewBox="0 0 24 24"><path d="M4 8h13l-3-3"/><path d="M20 16H7l3 3"/></svg></div><h3>Câmbio Embutido</h3><p>Fechamento em USD, BRL e EUR pela estrutura de correspondente, pronto para a API do parceiro.</p></div>
+        <div class="dcard reveal"><div class="ico"><svg class="i" width="22" height="22" viewBox="0 0 24 24"><path d="M3 20V10M9 20V4M15 20v-7M21 20v-11"/></svg></div><h3>Análise de Crédito</h3><p>Score, garantias e limite recomendado, com anexo de documentos ligado ao seu Google Drive.</p></div>
+        <div class="dcard reveal"><div class="ico"><svg class="i" width="22" height="22" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3 20a6 6 0 0112 0"/><path d="M16 8h5M16 12h5M16 16h3"/></svg></div><h3>CRM Comercial</h3><p>Leads, contas, contatos, oportunidades em pipeline e atividades. A máquina comercial da sua operação, num só lugar.</p></div>
+        <div class="dcard reveal"><div class="ico"><svg class="i" width="22" height="22" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l2.5 2.5"/></svg></div><h3>Selo &amp; Rating (Fase 2)</h3><p>Reputação bilateral por registro público, o efeito de rede que fecha o mercado.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="pband">
+    <div class="pband-bg" data-parallax style="background-image:url('assets/img/combines.jpg')"></div>
+    <div class="pband-ov"></div>
+    <div class="wrap pband-c">
+      <p class="kick" style="color:var(--gold-soft)">Serviços &amp; produtos</p>
+      <h2>Do primeiro laudo ao sistema operacional financeiro do agro.</h2>
+      <div style="margin-top:1.6rem; display:flex; gap:.9rem; flex-wrap:wrap"><button class="btn gold" data-login>Acessar a plataforma</button></div>
+    </div>
+  </div>
+
+  <section class="psec" id="servicos">
+    <div class="wrap">
+      <p class="kick">Como contratamos</p>
+      <h2 class="h2">Do serviço ao software, no seu ritmo.</h2>
+      <div class="deliver">
+        <div class="dcard reveal"><h3>Laudo avulso</h3><p style="color:var(--ink-soft)">Pague por laudo. Básico R$190, Completo R$390. Primeiro laudo por nossa conta.</p></div>
+        <div class="dcard reveal"><h3>Assinatura</h3><p style="color:var(--ink-soft)">Essencial, Pro e Business, com laudos inclusos, câmbio e o controle da operação.</p></div>
+        <div class="dcard reveal"><h3>Enterprise</h3><p style="color:var(--ink-soft)">Trading e cooperativa: multiusuário, SLA, integração e o Selo de Comprador Verificado.</p></div>
+      </div>
+      <div class="pfoot" style="margin-top:2.6rem"><span>© 2026 VORKAX · BR · AR · CL</span><span>O laudo é apoio à decisão, não garantia.</span></div>
+    </div>
+  </section>
+</div>
+
+<!-- ================= LOGIN ================= -->
+<div class="screen" id="login">
+  <div class="visual">
+    <div class="bg" style="background-image:url('assets/img/grain.jpg')"></div>
+    <div class="ov"></div>
+    <div class="q">
+      <div class="logo"><img width="26" height="26" src="../assets/falcao.svg" alt="" aria-hidden="true">VORKAX</div>
+      <h2>Cada carga liberada com um veredito, não com um palpite.</h2>
+      <p style="color:rgba(255,255,255,.8); margin-top:.8rem; font-family:var(--mono); font-size:.8rem">Painel operacional · confiança verificada</p>
+    </div>
+  </div>
+  <div class="panel">
+    <form class="form" id="loginForm">
+      <h1>Entrar</h1>
+      <p class="m">Acesse o painel da sua operação.</p>
+      <div class="field"><label for="loginEmail">E-mail</label><input type="email" id="loginEmail" value="admcuentasbolitas@gmail.com" autocomplete="username"></div>
+      <div class="field"><label for="loginPass">Senha</label><input type="password" id="loginPass" placeholder="Sua senha" autocomplete="current-password"></div>
+      <div id="loginErr" style="display:none; color:var(--stop); font-size:.82rem; margin:-.3rem 0 .9rem; font-weight:600"></div>
+      <button class="btn gold" type="button" data-dologin style="width:100%; justify-content:center; margin-top:.5rem">Entrar</button>
+      <button class="btn ghost" type="button" data-back style="width:100%; justify-content:center; margin-top:.7rem">Voltar ao site</button>
+      <p class="hint">Protótipo: a validação é no navegador (visível no código-fonte), não é segurança real. Autenticação com servidor entra na Fase 2.</p>
+    </form>
+  </div>
+</div>
+
+<!-- ================= APP ================= -->
+<div class="screen" id="app">
+  <div class="appbar">
+    <div class="in">
+      <div class="logo2"><img src="../assets/falcao.svg" alt="" aria-hidden="true">VORKAX</div>
+      <nav class="tabs" id="tabs" role="tablist" aria-label="Seções da plataforma">
+        <button class="tab active" data-nav="inicio" role="tab" aria-selected="true">Início</button>
+        <button class="tab" data-nav="dd" role="tab" aria-selected="false">Due Diligence</button>
+        <button class="tab" data-nav="fin" role="tab" aria-selected="false">Financeiro</button>
+        <button class="tab" data-nav="est" role="tab" aria-selected="false">Estoque</button>
+        <button class="tab" data-nav="cambio" role="tab" aria-selected="false">Câmbio</button>
+        <button class="tab" data-nav="credito" role="tab" aria-selected="false">Crédito</button>
+        <button class="tab" data-nav="crm" role="tab" aria-selected="false">CRM</button>
+        <button class="tab" data-nav="admin" role="tab" aria-selected="false">Administração</button>
+      </nav>
+      <label class="sr-only" for="roleAs">Ver a plataforma como</label>
+      <select id="roleAs" class="roleas" title="Ver a plataforma como"></select>
+      <button class="btn ghost sm" data-logout>Sair</button>
+    </div>
+  </div>
+  <div id="roBanner" role="status">Somente leitura · seu perfil não tem edição nesta área</div>
+  <main class="appwrap" id="appwrap">
+    <section class="view active" data-view="inicio" id="v-inicio" role="tabpanel" aria-label="Início"></section>
+    <section class="view" data-view="dd" id="v-dd" role="tabpanel" aria-label="Due Diligence"></section>
+    <section class="view" data-view="fin" id="v-fin" role="tabpanel" aria-label="Financeiro"></section>
+    <section class="view" data-view="est" id="v-est" role="tabpanel" aria-label="Estoque"></section>
+    <section class="view" data-view="cambio" id="v-cambio" role="tabpanel" aria-label="Câmbio"></section>
+    <section class="view" data-view="credito" id="v-credito" role="tabpanel" aria-label="Crédito"></section>
+    <section class="view" data-view="crm" id="v-crm" role="tabpanel" aria-label="CRM"></section>
+    <section class="view" data-view="admin" id="v-admin" role="tabpanel" aria-label="Administração"></section>
+  </main>
+</div>
+
+<script src="js/app.js"></script>
+</body>
+</html>

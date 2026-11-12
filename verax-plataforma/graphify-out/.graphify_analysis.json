@@ -1,0 +1,228 @@
+{
+  "communities": {
+    "0": [
+      "js_app",
+      "js_app_crmpipe",
+      "js_app_csum",
+      "js_app_effperms",
+      "js_app_effrole",
+      "js_app_effuser",
+      "js_app_estsel",
+      "js_app_esttr",
+      "js_app_find",
+      "js_app_finduser",
+      "js_app_kcard",
+      "js_app_load",
+      "js_app_propfind",
+      "js_app_ps",
+      "js_app_recalcest",
+      "js_app_recalcfin",
+      "js_app_rest",
+      "js_app_seed",
+      "js_app_sum"
+    ],
+    "1": [
+      "js_app_attachblock",
+      "js_app_blockrow",
+      "js_app_creditoadmin",
+      "js_app_creditoclient",
+      "js_app_cxcalc",
+      "js_app_ddcompute",
+      "js_app_drivekey",
+      "js_app_drivepanel",
+      "js_app_esc",
+      "js_app_field",
+      "js_app_fileitem",
+      "js_app_isadmin",
+      "js_app_propadminrow",
+      "js_app_propclientcard",
+      "js_app_rcambio",
+      "js_app_rcredito",
+      "js_app_rdd",
+      "js_app_rerenderattach"
+    ],
+    "2": [
+      "js_app_addfin",
+      "js_app_convertlead",
+      "js_app_crmadd",
+      "js_app_crmfind",
+      "js_app_moveopp",
+      "js_app_renderview",
+      "js_app_save",
+      "js_app_toast"
+    ],
+    "3": [
+      "js_app_admininteg",
+      "js_app_adminroles",
+      "js_app_adminusers",
+      "js_app_permeditor",
+      "js_app_radmin",
+      "js_app_rolelabel",
+      "js_app_usel"
+    ],
+    "4": [
+      "js_app_alert",
+      "js_app_bar",
+      "js_app_crmdash",
+      "js_app_finresumo",
+      "js_app_lrow",
+      "js_app_rinicio",
+      "js_app_stat"
+    ],
+    "5": [
+      "js_app_ci",
+      "js_app_crmativ",
+      "js_app_crmcontas",
+      "js_app_crmcontatos",
+      "js_app_crmleads",
+      "js_app_csel",
+      "js_app_rcrm"
+    ],
+    "6": [
+      "js_app_fincap",
+      "js_app_fincap_list",
+      "js_app_findre",
+      "js_app_finlanc",
+      "js_app_fintr",
+      "js_app_rfin",
+      "js_app_sel"
+    ],
+    "7": [
+      "js_app_applyrole",
+      "js_app_can",
+      "js_app_dologin",
+      "js_app_goview",
+      "js_app_show"
+    ],
+    "8": [
+      "build",
+      "build_data_uri",
+      "build_main",
+      "build_read"
+    ]
+  },
+  "cohesion": {
+    "0": 0.15204678362573099,
+    "1": 0.16339869281045752,
+    "2": 0.39285714285714285,
+    "3": 0.3333333333333333,
+    "4": 0.38095238095238093,
+    "5": 0.5238095238095238,
+    "6": 0.2857142857142857,
+    "7": 0.5,
+    "8": 0.8333333333333334
+  },
+  "gods": [
+    {
+      "id": "js_app_esc",
+      "label": "esc()",
+      "degree": 16
+    },
+    {
+      "id": "js_app_renderview",
+      "label": "renderView()",
+      "degree": 14
+    },
+    {
+      "id": "js_app_attachblock",
+      "label": "attachBlock()",
+      "degree": 8
+    },
+    {
+      "id": "js_app_rcrm",
+      "label": "rCRM()",
+      "degree": 8
+    },
+    {
+      "id": "js_app_rinicio",
+      "label": "rInicio()",
+      "degree": 7
+    },
+    {
+      "id": "js_app_save",
+      "label": "save()",
+      "degree": 6
+    },
+    {
+      "id": "js_app_rdd",
+      "label": "rDD()",
+      "degree": 6
+    },
+    {
+      "id": "js_app_rfin",
+      "label": "rFin()",
+      "degree": 6
+    },
+    {
+      "id": "js_app_creditoadmin",
+      "label": "creditoAdmin()",
+      "degree": 6
+    },
+    {
+      "id": "js_app_ci",
+      "label": "ci()",
+      "degree": 6
+    }
+  ],
+  "surprises": [
+    {
+      "source": "renderView()",
+      "target": "rAdmin()",
+      "source_files": [
+        "js/app.js",
+        "js/app.js"
+      ],
+      "confidence": "INFERRED",
+      "relation": "indirect_call",
+      "note": "Bridges community 2 \u2192 community 3"
+    },
+    {
+      "source": "renderView()",
+      "target": "rCambio()",
+      "source_files": [
+        "js/app.js",
+        "js/app.js"
+      ],
+      "confidence": "INFERRED",
+      "relation": "indirect_call",
+      "note": "Bridges community 2 \u2192 community 1"
+    },
+    {
+      "source": "renderView()",
+      "target": "rCRM()",
+      "source_files": [
+        "js/app.js",
+        "js/app.js"
+      ],
+      "confidence": "INFERRED",
+      "relation": "indirect_call",
+      "note": "Bridges community 2 \u2192 community 5"
+    },
+    {
+      "source": "renderView()",
+      "target": "rEst()",
+      "source_files": [
+        "js/app.js",
+        "js/app.js"
+      ],
+      "confidence": "INFERRED",
+      "relation": "indirect_call",
+      "note": "Bridges community 2 \u2192 community 0"
+    },
+    {
+      "source": "renderView()",
+      "target": "rFin()",
+      "source_files": [
+        "js/app.js",
+        "js/app.js"
+      ],
+      "confidence": "INFERRED",
+      "relation": "indirect_call",
+      "note": "Bridges community 2 \u2192 community 6"
+    }
+  ],
+  "tokens": {
+    "input": 0,
+    "output": 0
+  }
+}

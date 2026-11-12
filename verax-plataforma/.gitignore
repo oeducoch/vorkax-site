@@ -1,0 +1,15 @@
+# build output (gerado por build.py)
+dist/
+
+# backup local (não faz parte do projeto)
+_backup_original/
+
+# sistema
+.DS_Store
+Thumbs.db
+
+# editores
+.vscode/
+.idea/
+*.swp
+.gstack/
