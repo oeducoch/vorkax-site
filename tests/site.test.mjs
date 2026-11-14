@@ -40,7 +40,7 @@ for (const page of PAGES) {
 
 // ---------- Preferência do usuário: sem travessões ----------
 test('nenhum travessão (em dash) em páginas, CSS, JS e documentos', () => {
-  const files = [...PAGES, 'css/styles.css', 'css/tokens.css', 'js/main.js', 'js/fx.js', 'js/fx-data.js', 'README.md', 'DESIGN.md'];
+  const files = [...PAGES, 'css/styles.css', 'css/tokens.css', 'css/mercado.css', 'js/main.js', 'js/fx.js', 'js/fx-data.js', 'js/mercado.js', 'README.md', 'DESIGN.md'];
   for (const f of files) assert.ok(!read(f).includes('—'), `travessão encontrado em ${f}`);
 });
 
@@ -58,15 +58,18 @@ test('tokens.css é idêntico às cores do DESIGN.md', () => {
 });
 
 test('styles.css e main.js não usam cor literal (só tokens)', () => {
-  for (const f of ['css/styles.css', 'js/main.js', 'js/fx.js', 'js/fx-data.js']) {
+  for (const f of ['css/styles.css', 'css/mercado.css', 'js/main.js', 'js/fx.js', 'js/fx-data.js', 'js/mercado.js']) {
     assert.doesNotMatch(read(f), /#[0-9A-Fa-f]{3,8}\b(?![\w-])/, `cor literal em ${f}`);
   }
 });
 
 test('toda var() usada em styles.css está definida em tokens.css', () => {
   const defined = new Set([...read('css/tokens.css').matchAll(/--([a-z-]+):/g)].map((m) => m[1]));
-  const used = new Set([...read('css/styles.css').matchAll(/var\(--([a-z-]+)\)/g)].map((m) => m[1]));
-  for (const v of used) assert.ok(defined.has(v), `var(--${v}) não definida`);
+  for (const f of ['css/styles.css', 'css/mercado.css']) {
+    const locais = new Set([...read(f).matchAll(/(--[a-z-]+):/g)].map((m) => m[1].slice(2)));
+    const used = new Set([...read(f).matchAll(/var\(--([a-z-]+)\)/g)].map((m) => m[1]));
+    for (const v of used) assert.ok(defined.has(v) || locais.has(v), `var(--${v}) não definida em ${f}`);
+  }
 });
 
 // ---------- Contraste WCAG AA (texto normal >= 4.5) ----------
@@ -100,7 +103,7 @@ test('regra do DESIGN.md: ouro não serve como texto sobre marfim (deve falhar A
 
 // ---------- JavaScript ----------
 test('scripts compilam sem erro de sintaxe', () => {
-  for (const f of ['js/main.js', 'js/fx.js', 'js/fx-data.js']) assert.doesNotThrow(() => new vm.Script(read(f)), f);
+  for (const f of ['js/main.js', 'js/fx.js', 'js/fx-data.js', 'js/mercado.js']) assert.doesNotThrow(() => new vm.Script(read(f)), f);
 });
 
 // ---------- Câmbio: dados, regras de preço e integração com a API ----------
@@ -214,4 +217,28 @@ test('lista de campos [PREENCHER] a completar antes de publicar', (t) => {
   for (const p of PAGES) for (const m of read(p).matchAll(/\[PREENCHER:?([^\]]*)\]/g)) pend.add(m[1].trim() || 'sem descrição');
   t.diagnostic(`Pendências: ${[...pend].join(' | ')}`);
   assert.ok(true);
+});
+
+// ---------- Mercado: dados gerados pelo coletor ----------
+test('mercado: catálogo, séries e notícias bem formados', () => {
+  const cat = JSON.parse(read('data/mercado/catalogo.json'));
+  assert.ok(cat.ativos.length >= 10, 'catálogo com poucos ativos');
+  assert.ok(cat.ativos.some((a) => a.id === 'alho-produtor'), 'alho ao produtor presente');
+  for (const a of cat.ativos) {
+    assert.match(a.data, /^\d{4}-\d{2}-\d{2}$/);
+    assert.ok(a.valor > 0 && Number.isFinite(a.variacao), a.id);
+    const s = JSON.parse(read(`data/mercado/series/${a.id}.json`));
+    assert.ok(s.ufs.BR.length >= 6, `${a.id}: série BR curta`);
+    const datas = s.ufs.BR.map((p) => p[0]);
+    assert.deepEqual(datas, [...datas].sort(), `${a.id}: datas fora de ordem`);
+  }
+  const n = JSON.parse(read('data/mercado/noticias.json'));
+  for (const it of n.itens) assert.match(it.link, /^https?:\/\//);
+});
+
+test('mercado: link no menu de todas as páginas, entre Sobre e Falar com a Vorkax', () => {
+  for (const p of PAGES) {
+    const nav = read(p).match(/<nav id="nav"[\s\S]*?<\/nav>/)[0];
+    assert.match(nav, />Sobre<\/a>\s*<a href="(?:pages\/)?mercado\.html">Mercado<\/a>\s*<a class="btn btn--gold"/, p);
+  }
 });

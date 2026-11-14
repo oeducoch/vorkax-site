@@ -1,0 +1,38 @@
+# Atualiza os dados da página Mercado (preços CONAB e notícias) e publica no próprio repositório.
+# O GitHub roda agendamentos com atraso de alguns minutos em horários de pico; o mínimo é 5 min.
+name: Atualizar mercado
+
+on:
+  schedule:
+    - cron: "*/15 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: atualizar-mercado
+  cancel-in-progress: false
+
+jobs:
+  atualizar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Testar o coletor
+        run: python3 scripts/mercado/atualizar.py --selftest
+      - name: Atualizar dados
+        run: python3 scripts/mercado/atualizar.py
+      - name: Publicar se mudou
+        run: |
+          git add data/mercado
+          if git diff --cached --quiet; then
+            echo "Sem mudanças."
+            exit 0
+          fi
+          git config user.name "vorkax-mercado-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "dados: atualização automática do mercado"
+          git pull --rebase origin main
+          git push origin HEAD:main
