@@ -397,7 +397,7 @@
       '<div class="disc">Este laudo é uma avaliação factual da VORKAX para uso do solicitante. Não é parecer jurídico, certificação de sustentabilidade, garantia de pagamento nem autorização de operação. Protótipo local: fontes, evidência versionada e assinatura eletrônica entram na Fase 2 (backend).</div>'+
       '</body></html>';
     var w=window.open('','_blank'); if(!w){ toast('Libere o pop-up para gerar o laudo.'); return; }
-    w.document.write(html); w.document.close();
+    w.document.write(window.VK_I18N ? window.VK_I18N.html(html) : html); w.document.close();
     addAudit('Laudo emitido', i.razao||i.cnpj||'Contraparte', 'Semáforo '+txt+' · revisor '+S.dd.revisor); save();
     toast('Laudo gerado. Use Imprimir / salvar PDF na janela aberta.');
   }
