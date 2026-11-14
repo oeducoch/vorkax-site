@@ -32,7 +32,7 @@ for (const page of PAGES) {
       .filter((u) => !/^(https?:|mailto:|tel:|#|data:)/.test(u));
     assert.ok(refs.length > 0);
     for (const ref of refs) {
-      const target = resolve(join(ROOT, dirname(page)), ref.split('#')[0]);
+      const target = resolve(join(ROOT, dirname(page)), ref.split('#')[0].split('?')[0]);
       assert.ok(existsSync(target), `${page} aponta para arquivo inexistente: ${ref}`);
     }
   });

@@ -185,7 +185,7 @@ a:hover { color: var(--primary-deep); }
 .ticker {
   position: relative; overflow: hidden; background: var(--primary-deep); color: var(--gold-light);
   border-block: 1px solid color-mix(in srgb, var(--gold) 35%, transparent);
-  font: 600 .92rem/1 var(--font-body); font-variant-numeric: tabular-nums; letter-spacing: .04em;
+  font-family: var(--font-body); font-weight: 600; font-size: .92rem; line-height: 1; font-variant-numeric: tabular-nums; letter-spacing: 0;
 }
 .ticker::after {
   content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .45;
@@ -196,7 +196,7 @@ a:hover { color: var(--primary-deep); }
 .ticker__track:has(> .ticker__group) { animation: ticker 45s linear infinite; }
 .ticker:hover .ticker__track { animation-play-state: paused; }
 .ticker__group { display: flex; }
-.ticker__item {
+.ticker__item { font-family: var(--font-body);
   display: inline-flex; align-items: center; gap: 8px; padding: 0 26px; white-space: nowrap;
   border-right: 1px solid color-mix(in srgb, var(--gold) 25%, transparent);
 }
