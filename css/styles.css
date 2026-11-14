@@ -185,7 +185,7 @@ a:hover { color: var(--primary-deep); }
 .ticker {
   position: relative; overflow: hidden; background: var(--primary-deep); color: var(--gold-light);
   border-block: 1px solid color-mix(in srgb, var(--gold) 35%, transparent);
-  font: 600 .92rem/1 ui-monospace, "SF Mono", Menlo, Consolas, monospace; letter-spacing: .04em;
+  font: 600 .92rem/1 var(--font-body); font-variant-numeric: tabular-nums; letter-spacing: .04em;
 }
 .ticker::after {
   content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .45;
@@ -285,3 +285,6 @@ a:hover { color: var(--primary-deep); }
   .hero { padding: 64px 0 72px; }
   .section { padding: 48px 0; }
 }
+
+/* mesma fonte em botões e campos de formulário */
+button, input, select, textarea { font-family: inherit; }

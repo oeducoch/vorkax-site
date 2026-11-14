@@ -17,12 +17,12 @@ colors:
   down: "#F2A08B"
 typography:
   h1:
-    fontFamily: Sora
+    fontFamily: Plus Jakarta Sans
     fontSize: 48px
     fontWeight: 700
     lineHeight: 1.1
   body:
-    fontFamily: Inter
+    fontFamily: Plus Jakarta Sans
     fontSize: 16px
     fontWeight: 400
     lineHeight: 1.6

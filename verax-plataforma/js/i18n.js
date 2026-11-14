@@ -122,20 +122,47 @@
     walk(document.body); mark();
   }
 
+  var NAMES = { pt: 'Português', es: 'Español', en: 'English' };
   function mark() {
-    [].forEach.call(document.querySelectorAll('.langsw button'), function (b) { b.setAttribute('aria-pressed', b.dataset.lang === lang ? 'true' : 'false'); });
+    [].forEach.call(document.querySelectorAll('.langsw'), function (box) {
+      var cur = box.querySelector('.langsw__cur'); if (cur) cur.textContent = NAMES[lang];
+      [].forEach.call(box.querySelectorAll('[data-lang]'), function (o) { o.setAttribute('aria-selected', o.dataset.lang === lang ? 'true' : 'false'); });
+    });
+  }
+  function closeAll(except) {
+    [].forEach.call(document.querySelectorAll('.langsw.open'), function (b) {
+      if (b === except) return;
+      b.classList.remove('open'); b.querySelector('.langsw__btn').setAttribute('aria-expanded', 'false');
+    });
   }
 
+  // botão que mostra o idioma atual e abre a lista logo abaixo
+  var CHEV = '<svg class="langsw__chev" viewBox="0 0 12 12" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5"/></svg>';
   function mkSwitcher() {
-    var d = document.createElement('div'); d.className = 'langsw'; d.setAttribute('role', 'group'); d.setAttribute('aria-label', 'Idioma'); d.setAttribute('data-i18n-skip', '');
-    d.innerHTML = '<button type="button" data-lang="pt" title="Português">PT</button><button type="button" data-lang="es" title="Español">ES</button><button type="button" data-lang="en" title="English">EN</button>';
+    var d = document.createElement('div'); d.className = 'langsw'; d.setAttribute('data-i18n-skip', '');
+    d.innerHTML = '<button type="button" class="langsw__btn" aria-haspopup="listbox" aria-expanded="false" aria-label="Idioma / Language / Idioma"><span class="langsw__cur">' + NAMES[lang] + '</span>' + CHEV + '</button>' +
+      '<ul class="langsw__menu" role="listbox" aria-label="Idioma">' +
+      LANGS.map(function (l) { return '<li role="presentation"><button type="button" role="option" data-lang="' + l + '" lang="' + l + '" aria-selected="' + (l === lang) + '">' + NAMES[l] + '</button></li>'; }).join('') +
+      '</ul>';
     return d;
   }
   function mount() {
     var menu = document.querySelector('nav.pbar .menu'); if (menu) menu.insertBefore(mkSwitcher(), menu.firstChild);
-    var panel = document.querySelector('#login .panel'); if (panel) { panel.classList.add('has-lang'); panel.appendChild(mkSwitcher()); }
+    var panel = document.querySelector('#login .panel'); if (panel) panel.appendChild(mkSwitcher());
     var out = document.querySelector('.appbar [data-logout]'); if (out) out.parentNode.insertBefore(mkSwitcher(), out);
-    document.addEventListener('click', function (e) { var b = e.target.closest && e.target.closest('.langsw button'); if (b) setLang(b.dataset.lang); });
+    document.addEventListener('click', function (e) {
+      var t = e.target.closest ? e.target : e.target.parentNode;
+      var opt = t.closest('.langsw [data-lang]');
+      if (opt) { setLang(opt.dataset.lang); var bx = opt.closest('.langsw'); closeAll(); var bt = bx.querySelector('.langsw__btn'); bt.focus(); return; }
+      var btn = t.closest('.langsw__btn');
+      if (btn) { var box = btn.closest('.langsw'), open = !box.classList.contains('open'); closeAll(box); box.classList.toggle('open', open); btn.setAttribute('aria-expanded', String(open)); return; }
+      closeAll();
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key !== 'Escape') return;
+      var o = document.querySelector('.langsw.open'); if (!o) return;
+      closeAll(); o.querySelector('.langsw__btn').focus();
+    });
   }
 
   // traduz um HTML completo (ex.: a janela do laudo) e devolve o HTML traduzido

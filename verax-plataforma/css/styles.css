@@ -3,7 +3,7 @@
     --ink:#1A1D1B; --ink-soft:#565B56; --ink-faint:#888E88; --line:#E6E3DA; --line-2:#D9D5C9;
     --gold:#BD8B1B; --gold-deep:#8E6A14; --gold-soft:#E7D19A; --gold-bg:#FAF2DD;
     --go:#1F9D57; --go-bg:#E7F4EC; --warn:#C0871A; --warn-bg:#FAF1D9; --stop:#C63A2E; --stop-bg:#FBE7E4; --info:#2F6FB0; --info-bg:#E7EFF7;
-    --sans:"Plus Jakarta Sans",system-ui,sans-serif; --mono:"IBM Plex Mono",ui-monospace,monospace;
+    --sans:"Plus Jakarta Sans",system-ui,sans-serif; --mono:"Plus Jakarta Sans",system-ui,sans-serif;
     --sh:0 5px 18px rgba(20,25,22,.06); --sh-lg:0 18px 46px rgba(20,25,22,.13);
     --radius:15px;
   }
@@ -222,15 +222,21 @@
   .propcard:hover{box-shadow:var(--sh-lg)}
   .adminonly-tag{font-family:var(--mono); font-size:.62rem; letter-spacing:.06em; text-transform:uppercase; color:var(--gold-deep); background:var(--gold-bg); border:1px solid var(--gold-soft); border-radius:6px; padding:.15rem .45rem; margin-left:.4rem}
 
-  /* seletor de idioma PT / ES / EN */
-  .langsw{display:inline-flex; border:1px solid currentColor; border-radius:999px; overflow:hidden; font-family:var(--mono); font-size:.7rem; font-weight:600; flex:none}
-  .langsw button{background:transparent; border:0; color:inherit; padding:.4rem .62rem; cursor:pointer; letter-spacing:.05em; font:inherit}
-  .langsw button[aria-pressed="true"]{background:var(--gold); color:#1A1D1B}
-  .langsw button:focus-visible{outline:2px solid var(--gold); outline-offset:-2px}
-  nav.pbar .langsw{color:#fff} nav.pbar.solid .langsw{color:var(--ink)}
-  .appbar .langsw{color:rgba(255,255,255,.78)}
-  #login .panel{position:relative} #login .panel .langsw{position:absolute; top:1.2rem; right:1.2rem; color:var(--ink-soft)}
-  @media(max-width:560px){nav.pbar .menu{gap:.6rem} .langsw button{padding:.36rem .5rem}}
+  /* seletor de idioma: botão com o idioma atual que abre a lista logo abaixo */
+  .langsw{position:relative; display:inline-block; flex:none; font-family:var(--sans)}
+  .langsw__btn{display:inline-flex; align-items:center; gap:.45rem; background:transparent; color:inherit; border:1px solid currentColor; border-radius:999px; padding:.42rem .8rem; font:600 .82rem/1 var(--sans); cursor:pointer; white-space:nowrap}
+  .langsw__btn:hover{background:rgba(255,255,255,.1)} .langsw__btn:focus-visible{outline:2px solid var(--gold); outline-offset:2px}
+  .langsw__chev{transition:transform .15s} .langsw.open .langsw__chev{transform:rotate(180deg)}
+  .langsw__menu{display:none; position:absolute; right:0; top:calc(100% + .4rem); min-width:100%; margin:0; padding:.3rem; list-style:none; background:#fff; color:var(--ink); border:1px solid var(--line-2); border-radius:12px; box-shadow:0 14px 34px rgba(0,0,0,.22); z-index:200}
+  .langsw.open .langsw__menu{display:block}
+  .langsw__menu button{display:flex; align-items:center; justify-content:space-between; gap:.8rem; width:100%; background:transparent; border:0; color:inherit; text-align:left; padding:.55rem .7rem; border-radius:8px; font:500 .86rem/1.1 var(--sans); cursor:pointer; white-space:nowrap}
+  .langsw__menu button:hover,.langsw__menu button:focus-visible{background:var(--gold-bg); outline:none}
+  .langsw__menu button[aria-selected="true"]{font-weight:700; color:var(--gold-deep)}
+  .langsw__menu button[aria-selected="true"]::after{content:"\2713"; font-weight:700}
+  nav.pbar .langsw{color:#fff} nav.pbar.solid .langsw{color:var(--ink)} nav.pbar.solid .langsw__btn:hover{background:var(--surface-2)}
+  .appbar .langsw{color:rgba(255,255,255,.85)}
+  #login .panel{position:relative} #login .panel .langsw{position:absolute; top:1.2rem; right:1.2rem; color:var(--ink-soft)} #login .panel .langsw__btn:hover{background:var(--surface-2)}
+  @media(max-width:560px){nav.pbar .menu{gap:.6rem} .langsw__btn{padding:.38rem .6rem; font-size:.76rem}}
   /* com o seletor de idioma e rótulos mais longos (ES/EN), a barra de abas precisa de mais folga */
   .appbar .roleas{max-width:200px; text-overflow:ellipsis}
   .appbar .tab{padding:.5rem .7rem}
