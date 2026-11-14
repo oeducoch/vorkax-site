@@ -11,7 +11,6 @@ vorkax-site/
 │   ├── cambio.html
 │   ├── credito.html
 │   ├── plataforma.html
-│   ├── compras-publicas.html
 │   ├── sobre.html
 │   ├── contato.html        formulário (abre o e-mail do visitante; sem backend)
 │   └── privacidade.html    modelo LGPD, revisar com o jurídico
@@ -50,7 +49,7 @@ npm run lint:design   # valida o DESIGN.md (contraste e estrutura)
 
 ## Antes de publicar
 
-1. Preencher todos os `[PREENCHER]` (razão social, CNPJ, telefone, endereço, instituição parceira, encarregado de dados).
+1. Preencher todos os `[PREENCHER]` (horário de atendimento e encarregado de dados).
 2. Validar com o jurídico os textos sobre correspondente cambial, crédito e a Política de Privacidade.
-3. Confirmar o e-mail `contato@vorkax.com.br` (atributo `data-to` em `pages/contato.html`).
+3. Confirmar o e-mail `admin@vorkax.com` (atributo `data-to` em `pages/contato.html`).
 4. Ligar o formulário a um backend ou CRM quando houver.

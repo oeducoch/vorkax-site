@@ -1,7 +1,7 @@
 ---
 version: alpha
 name: Vorkax
-description: "Fintech de câmbio, crédito, plataforma e compras públicas. Verde de prosperidade, ouro de abundância, marfim quente de confiança. Símbolo: Falcão 3 (V com asas)."
+description: "Fintech de câmbio, crédito, plataforma. Verde de prosperidade, ouro de abundância, marfim quente de confiança. Símbolo: Falcão 3 (V com asas)."
 colors:
   primary: "#0F4C3A"
   primary-deep: "#0A2E24"
